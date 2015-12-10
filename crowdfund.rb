@@ -1,11 +1,33 @@
-def project_status(project,funding=0)
-"#{project.upcase.center(20,"~")} has $#{funding} in funding."
+class Project
+
+	def initialize(name, start_amount=0, target_amount=5000)
+		@name = name.upcase
+		@start_amount = start_amount
+		@target_amount = target_amount
+	end
+
+	def to_s
+		"Project #{@name} has $#{@start_amount} in funding towards a goal of $#{@target_amount}."
+	end
+
+	def add_funds
+		@start_amount += 25
+		"Project #{@name} got more funds!"
+	end
+
+	def remove_funds
+		@start_amount -= 15
+		"Project #{@name} lost some funds!"
+	end
+
 end
 
-project1 = "Project ABC"
-project2 = "Project LMN"
-project3 = "Project XYZ"
+project1 = Project.new("lmn", 500, 3000)
+project2 = Project.new("xyz", 25, 75)
 
-puts project_status("Project ABC", 23000)
-puts project_status("Project LMN")
-puts project_status("Project XYZ", 2000)
+puts project1
+puts project2
+puts project1.remove_funds
+puts project2.add_funds
+puts project1
+puts project2
