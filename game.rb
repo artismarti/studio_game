@@ -28,7 +28,7 @@ class Game
 
   def print_stats
     strong_players, weak_players = @players.partition{|player| player.strong?}
-    puts "#{@title} Stats:\n"
+    puts "\n#{@title} Stats:\n"
     puts "#{strong_players.length} Strong Player(s)\n"
     strong_players.each do |player|
       puts "#{player.name} (#{player.health})"
@@ -38,5 +38,13 @@ class Game
     weak_players.each do |player|
       puts "#{player.name} (#{player.health})"
     end
+
+    puts "\n#{@title} High Scores:"
+    sorted_players = @players.sort { |a, b| b.score <=> a.score }
+    sorted_players.each do |player|
+      formatted_name = (player.name).ljust(20, '.')
+      puts "#{formatted_name} #{player.score}"
+    end
   end
+
 end
