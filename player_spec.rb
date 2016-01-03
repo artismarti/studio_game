@@ -50,7 +50,7 @@ describe Player do
     before do
       @player = Player.new("larry", 100)
     end
-    it "is wimpy" do
+    it "is weak" do
       expect(@player).not_to be_strong
     end
   end
