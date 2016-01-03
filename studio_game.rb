@@ -9,7 +9,7 @@ player6 = Player.new("arti", rand(50..120))
 player7 = Player.new("smarti", rand(50..120))
 player8 = Player.new("sue", rand(50..120))
 
-knuckleheads = Game.new("knuckleheads")
+knuckleheads = Game.new("Knuckleheads")
 knuckleheads.add_player(player1)
 knuckleheads.add_player(player2)
 knuckleheads.add_player(player3)
