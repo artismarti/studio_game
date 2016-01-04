@@ -6,7 +6,6 @@ describe Player do
     $stdout = StringIO.new
     @initial_health = 150
     @player = Player.new("arti", @initial_health)
-
   end
   it "has a capitalized name" do
     expect(@player.name).to eq("Arti")
@@ -17,11 +16,15 @@ describe Player do
   end
 
   it "has a string representation" do
-    expect(@player.to_s).to eq("I'm Arti with a health of 150 and a score of 154.")
+    @player.found_treasure(Treasure.new(:hammer, 50))
+    @player.found_treasure(Treasure.new(:hammer, 50))
+    expect(@player.to_s).to eq("I'm Arti with health = 150, points = 100, and score = 250.")
   end
 
-  it "computes a score as the sum of its health and length of name" do
-    expect(@player.score).to eq(154)
+  it "computes a score as the sum of its health and points" do
+    @player.found_treasure(Treasure.new(:hammer, 50))
+    @player.found_treasure(Treasure.new(:hammer, 50))
+    expect(@player.score).to eq(250)
 
   end
 
