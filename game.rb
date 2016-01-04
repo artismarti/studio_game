@@ -17,7 +17,6 @@ class Game
 
   def play(rounds)
     puts "There are #{@players.size} players in #{@title}:"
-
       1.upto(rounds) do |round|
         puts "\nRound #{round}:"
         @players.each do |player|
