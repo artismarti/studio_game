@@ -1,5 +1,6 @@
 require "rspec"
 require_relative "game"
+require_relative "player"
 
 describe Game do
   before do
@@ -35,5 +36,21 @@ describe Game do
     game.add_player(player)
     game.play(1)
     expect(player.points).not_to be_zero
+  end
+
+  it "computes total points as the sum of all player points" do
+    game = Game.new("Knuckleheads")
+
+    player1 = Player.new("moe")
+    player2 = Player.new("larry")
+
+    game.add_player(player1)
+    game.add_player(player2)
+
+    player1.found_treasure(Treasure.new(:hammer, 50))
+    player1.found_treasure(Treasure.new(:hammer, 50))
+    player2.found_treasure(Treasure.new(:crowbar, 400))
+
+    expect(game.total_points).to eq(500)
   end
 end
