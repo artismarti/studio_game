@@ -16,7 +16,7 @@ class Game
   end
 
   def play(rounds)
-    puts "There are #{@players.size} players in #{@title}:"
+    puts "\nThere are #{@players.size} players in #{@title}:"
       1.upto(rounds) do |round|
         puts "\nRound #{round}:"
         @players.each do |player|
@@ -33,6 +33,10 @@ class Game
 
   def print_name_health(player)
     puts "#{player.name} (#{player.health})"
+  end
+
+  def total_points
+    @players.reduce(0){|sum, player| sum + player.points}
   end
 
   def print_stats
@@ -54,6 +58,8 @@ class Game
       formatted_name = (player.name).ljust(20, '.')
       puts "#{formatted_name} #{player.score}"
     end
+
+    puts "\n Total Treasure Points found: #{total_points} points."
   end
 
 end
