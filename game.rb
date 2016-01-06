@@ -1,5 +1,4 @@
 require_relative 'player'
-require_relative 'die'
 require_relative 'game_turn'
 require_relative 'treasure_trove'
 
@@ -58,8 +57,16 @@ class Game
       formatted_name = (player.name).ljust(20, '.')
       puts "#{formatted_name} #{player.score}"
     end
-
     puts "\n Total Treasure Points found: #{total_points} points."
+
+    @players.sort.each do |player|
+      puts "\n#{player.name}'s point totals:"
+      player.each_found_treasure do |treasure|
+        puts "#{treasure.points} total #{treasure.name} points"
+      end
+      puts "#{player.points} grand total points."
+    end
+
   end
 
 end
